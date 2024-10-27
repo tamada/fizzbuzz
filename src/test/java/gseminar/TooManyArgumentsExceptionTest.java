@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
-public class TooManyArgumentsExceptionTest {
+class TooManyArgumentsExceptionTest {
     private Exception exception;
 
     @BeforeEach
@@ -15,7 +15,7 @@ public class TooManyArgumentsExceptionTest {
     }
 
     @Test
-    public void testBasic(){
+    void testBasic(){
         assertInstanceOf(TooManyArgumentsException.class, exception);
         assertEquals("message", exception.getMessage());
     }

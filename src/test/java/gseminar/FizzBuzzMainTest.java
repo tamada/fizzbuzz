@@ -10,30 +10,30 @@ import java.io.StringWriter;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 
-public class FizzBuzzMainTest{
+class FizzBuzzMainTest{
     @Test
-    public void testException1() throws Exception {
+    void testException1() {
         assertThrows(RequiredValueMissingException.class, () -> 
             new FizzBuzzMain().run(new String[0], null)
         );
     }
 
     @Test
-    public void testException2() throws Exception {
+    void testException2() {
         assertThrows(TooManyArgumentsException.class, () -> 
             new FizzBuzzMain().run(new String[3], null)
         );
     }
 
     @Test
-    public void testException3() {
+    void testException3() {
         assertThrows(NumberFormatException.class, () -> 
             new FizzBuzzMain().run(new String[] { "string" }, null)
         );
     }
 
     @Test
-    public void testBasic() {
+    void testBasic() {
         FizzBuzzMain main = new FizzBuzzMain();
         StringWriter out = new StringWriter();
         main.run(new String[] { "15" }, new PrintWriter(out));
@@ -42,7 +42,7 @@ public class FizzBuzzMainTest{
     }
 
     @Test
-    public void testMain() {
+    void testMain() {
         ByteArrayOutputStream out = new ByteArrayOutputStream(); 
         System.setOut(new PrintStream(out));
         PrintStream pout = new PrintStream(out);

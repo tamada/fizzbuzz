@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FizzBuzzItemTest{
+class FizzBuzzItemTest{
     @Test
-    public void testFizzBuzzConversion(){
+    void testFizzBuzzConversion(){
         assertEquals("1", FizzBuzzItem.of(1).toString());
         assertEquals("7", FizzBuzzItem.of(7).toString());
         assertEquals("13", FizzBuzzItem.of(13).toString());
