@@ -2,30 +2,30 @@ package gseminar;
 
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FizzBuzzRunnerTest{
     @Test
     public void testLengthByStream(){
         FizzBuzzRunner runner = new FizzBuzzRunner();
         List<FizzBuzzItem> items = runner.createFizzBuzzListByStream(40);
-        assertThat(items.size(), is(40));
+        assertEquals(40, items.size());
     }
 
     @Test
     public void testLength(){
         FizzBuzzRunner runner = new FizzBuzzRunner();
         List<FizzBuzzItem> items = runner.createFizzBuzzList(40);
-        assertThat(items.size(), is(40));
+        assertEquals(40, items.size());
     }
 
     @Test
     public void testDefaultLength(){
         FizzBuzzRunner runner = new FizzBuzzRunner();
         List<FizzBuzzItem> items = runner.createFizzBuzzList();
-        assertThat(items.size(), is(30));
+        assertEquals(30, items.size());
     }
 }

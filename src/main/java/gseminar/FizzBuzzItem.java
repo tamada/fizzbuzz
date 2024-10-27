@@ -1,12 +1,13 @@
 package gseminar;
 
 import java.io.PrintWriter;
-import java.util.Objects;
 
 public abstract class FizzBuzzItem {
     public void print(PrintWriter out) {
         out.println(toString());
     }
+
+    public abstract String toString();
 
     public static FizzBuzzItem of(int value){
         if(value % 15 == 0) 
@@ -19,8 +20,6 @@ public abstract class FizzBuzzItem {
             return new IntItem(value);
     }
 
-    public abstract String toString();
-
     private static class StringItem extends FizzBuzzItem {
         private String item;
 
@@ -31,15 +30,6 @@ public abstract class FizzBuzzItem {
         @Override
         public String toString(){
             return item;
-        }
-
-        public int hashCode(){
-            return Objects.hash(getClass(), item);
-        }
-
-        public boolean equals(Object object) {
-            return object instanceof StringItem
-                && Objects.equals(((StringItem)object).item, item);
         }
     }
 
@@ -53,15 +43,6 @@ public abstract class FizzBuzzItem {
         @Override
         public String toString(){
             return Integer.toString(item);
-        }
-
-        public int hashCode(){
-            return Objects.hash(getClass(), item);
-        }
-
-        public boolean equals(Object object) {
-            return object instanceof IntItem
-                && item == ((IntItem)object).item;
         }
     }
 }

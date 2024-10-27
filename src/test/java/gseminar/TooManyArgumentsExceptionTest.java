@@ -1,27 +1,22 @@
 package gseminar;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.Matchers.instanceOf;
-import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 public class TooManyArgumentsExceptionTest {
     private Exception exception;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         this.exception = new TooManyArgumentsException("message");
     }
 
     @Test
-    public void testInstance(){
-        assertThat(exception, is(instanceOf(TooManyArgumentsException.class)));
-    }
-
-    @Test
-    public void testGetMessage(){
-        assertThat(exception.getMessage(), is("message"));
+    public void testBasic(){
+        assertInstanceOf(TooManyArgumentsException.class, exception);
+        assertEquals("message", exception.getMessage());
     }
 }
