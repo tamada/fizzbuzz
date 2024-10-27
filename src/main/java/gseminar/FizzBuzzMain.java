@@ -2,11 +2,11 @@ package gseminar;
 
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List; 
 
 public class FizzBuzzMain {
-    public void run(String[] args, PrintWriter out) throws IOException {
+    public void run(String[] args, PrintWriter out) {
         if(args.length != 1)
             throw suitableException(args.length);
         runFizzBuzz(Integer.parseInt(args[0]), out);
@@ -33,8 +33,8 @@ public class FizzBuzzMain {
         out.flush();
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         FizzBuzzMain main = new FizzBuzzMain();
-        main.run(args, new PrintWriter(new OutputStreamWriter(System.out, "utf-8")));
+        main.run(args, new PrintWriter(new OutputStreamWriter(System.out, StandardCharsets.UTF_8)));
     }
 }

@@ -4,30 +4,28 @@ import java.io.PrintWriter;
 import java.util.Objects;
 
 public abstract class FizzBuzzItem {
-    public abstract void print(PrintWriter out);
+    public void print(PrintWriter out) {
+        out.println(toString());
+    }
 
     public static FizzBuzzItem of(int value){
         if(value % 15 == 0) 
-            return new FizzBuzzStringItem("FizzBuzz");
+            return new StringItem("FizzBuzz");
         else if(value % 3 == 0)
-            return new FizzBuzzStringItem("Fizz");
+            return new StringItem("Fizz");
         else if(value % 5 == 0)
-            return new FizzBuzzStringItem("Buzz");
+            return new StringItem("Buzz");
         else
-            return new FizzBuzzIntItem(value);
+            return new IntItem(value);
     }
 
     public abstract String toString();
 
-    private static class FizzBuzzStringItem extends FizzBuzzItem {
+    private static class StringItem extends FizzBuzzItem {
         private String item;
 
-        public FizzBuzzStringItem(String item){
+        public StringItem(String item){
             this.item = item;
-        }
-
-        public void print(PrintWriter out) {
-            out.println(item);
         }
 
         @Override
@@ -40,15 +38,15 @@ public abstract class FizzBuzzItem {
         }
 
         public boolean equals(Object object) {
-            return object instanceof FizzBuzzStringItem
-                && Objects.equals(((FizzBuzzStringItem)object).item, item);
+            return object instanceof StringItem
+                && Objects.equals(((StringItem)object).item, item);
         }
     }
 
-    private static class FizzBuzzIntItem extends FizzBuzzItem {
+    private static class IntItem extends FizzBuzzItem {
         private int item;
 
-        public FizzBuzzIntItem(int item){
+        public IntItem(int item){
             this.item = item;
         }
 
@@ -57,17 +55,13 @@ public abstract class FizzBuzzItem {
             return Integer.toString(item);
         }
 
-        public void print(PrintWriter out) {
-            out.println(item);
-        }
-
         public int hashCode(){
             return Objects.hash(getClass(), item);
         }
 
         public boolean equals(Object object) {
-            return object instanceof FizzBuzzIntItem
-                && item == ((FizzBuzzIntItem)object).item;
+            return object instanceof IntItem
+                && item == ((IntItem)object).item;
         }
     }
 }
